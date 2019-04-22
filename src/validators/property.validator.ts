@@ -4,6 +4,7 @@ import { PropertyValidatorContext } from './property.validator.context'
 
 export abstract class PropertyValidator<T> {
     public errorSource: StringSource
+    public errorCode: string
 
     protected onValidateAsync: (context: PropertyValidatorContext<T>) => Promise<ValidationFailure[]>
 
@@ -28,7 +29,7 @@ export abstract class PropertyValidator<T> {
                 .appendPropertyValue(context.propertyValue)
 
             let errorMessage: string = context.messageFormatter.buildMessage(template)
-            let result: ValidationFailure[] = [new ValidationFailure(context.propertyName, errorMessage, context.propertyValue)]
+            let result: ValidationFailure[] = [new ValidationFailure(context.propertyName, errorMessage, context.propertyValue, this.errorCode)]
 
             return Promise.resolve(result)
         }

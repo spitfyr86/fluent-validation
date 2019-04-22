@@ -1,6 +1,6 @@
 export class ValidationFailure {
 
-    constructor(public propertyName: string, public errorMessage: string, public propertyValue: {}) {
+    constructor(public propertyName: string, public errorMessage: string, public propertyValue: {}, public errorCode: string) {
     }
 
     public failed(): boolean {

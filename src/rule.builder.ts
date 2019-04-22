@@ -26,6 +26,11 @@ export class RuleBuilder<TInstance, UValue>{
         return this
     }
 
+    public withErrorCode(errorCode: string): RuleBuilder<TInstance, UValue> {
+        this.rule.currentValidator.errorCode = errorCode
+        return this
+    }
+
     public withMessage(errorMessage: string): RuleBuilder<TInstance, UValue> {
         this.rule.currentValidator.errorSource = new StaticStringSource(errorMessage)
         return this
